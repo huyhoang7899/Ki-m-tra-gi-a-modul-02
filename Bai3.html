@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let TV = function(channel,volumn){
+        this.channel = channel;
+        this.volumn = volumn;
+        this.status = false;
+        this.changeChannel = function () {
+            alert("Kênh hiện tại : " + this.channel);
+        };
+        this.changeVolumn = function () {
+            alert("Âm lượng hiên tại : " + this.volumn);
+        }
+    };
+
+    let Remote = function (code) {
+        this.code = code;
+        this.changeChannel = function (tv,channel) {
+            tv.channel = channel;
+        };
+        this.changeVolumn = function (tv,volumn) {
+            tv.volumn+=volumn;
+        };
+        this.turnOn = function (tv) {
+            tv.status = true;
+        };
+        this.turnOff = function (tv) {
+            tv.status = false;
+        };
+    };
+    let tv = new TV(7,10);
+    let remote = new Remote("tv");
+    remote.turnOn(tv);
+    remote.changeChannel(tv, 3);
+    tv.changeChannel();
+    remote.changeVolumn(tv, 2);
+    tv.changeVolumn();
+    remote.turnOff(tv);
+</script>
+</body>
+</html>
